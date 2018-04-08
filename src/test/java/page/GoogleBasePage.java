@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class GoogleBasePage {
     WebDriver driver;
@@ -31,6 +32,6 @@ public class GoogleBasePage {
      */
     public void waitUntilElementIsVisible (WebElement webElement){
         WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.until(ExpectedConditions.visibilityOf(webElement));
+        wait.until(visibilityOf(webElement));
     }
 }

@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoogleSearchResultsPage extends GoogleBasePage {
-    @FindBy(xpath = "//*[@id='rso']//h3/a")
+    @FindBy(xpath = "//*[@class='srg']//h3/a")
     private List<WebElement> searchResults;
 
     @FindBy(id = "pnnext")
     private WebElement linkToTheNextPage;
+
+    @FindBy(id = "resultStats")
+    private WebElement numberOfResutls;
 
     /**
      * Constructor of GoogleSearchResultsPage class that takes WebDriver instance from GoogleBasePage class
@@ -32,7 +35,7 @@ public class GoogleSearchResultsPage extends GoogleBasePage {
      * @return list of card titles from the search result
      */
     public List<String> getResults(){
-        //waitUntilElementIsVisible(linkToTheNextPage);
+        waitUntilElementIsVisible(numberOfResutls);
         List<String> resultsStringList = new ArrayList();
         for (WebElement result : searchResults) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", result);
@@ -47,6 +50,8 @@ public class GoogleSearchResultsPage extends GoogleBasePage {
      * @return the next page pof Search results
      */
     public GoogleSecondSearchResultsPage goToTheNextPage(){
+        waitUntilElementIsVisible(numberOfResutls);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", linkToTheNextPage);
         linkToTheNextPage.click();
         return new GoogleSecondSearchResultsPage(driver);
     }

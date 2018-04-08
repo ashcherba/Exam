@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class GoogleMainPage extends GoogleBasePage {
-    WebDriver driver;
-
     @FindBy(id = "lst-ib")
     private WebElement searchInputField;
 

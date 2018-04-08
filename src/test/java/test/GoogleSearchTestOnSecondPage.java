@@ -18,12 +18,11 @@ public class GoogleSearchTestOnSecondPage extends BaseTest {
         GoogleMainPage mainPage = new GoogleMainPage(driver);
         GoogleSearchResultsPage searchResultsPage = mainPage.searchForTerm("Selenium");
         GoogleSecondSearchResultsPage secondResultsPage = searchResultsPage.goToTheNextPage();
-        List<String> results = searchResultsPage.getResults();
+        List<String> results = secondResultsPage.getResults();
 
-        Assert.assertTrue(secondResultsPage.isLoaded());
         Assert.assertEquals(results.size(), 10, "Number of results is wrong");
         for(String result: results) {
-            Assert.assertTrue(result.toLowerCase().contains("Selenium"),
+            Assert.assertTrue(result.toLowerCase().contains("selenium"),
                     "Searchterm "+"'Selenium'"+ " not found in cart");
         }
     }

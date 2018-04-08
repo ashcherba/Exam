@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Google Search test on Chrome browser" verbose="1" >
+<suite name="Google Search test on Second Results Page in Chrome browser" verbose="1" >
     <test name="Chrome browser" >
         <parameter name="browserType" value ="Chrome"/>
         <parameter name="envUrl" value ="https://www.google.com"/>

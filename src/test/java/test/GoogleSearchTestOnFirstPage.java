@@ -19,7 +19,7 @@ public class GoogleSearchTestOnFirstPage extends BaseTest{
 
         Assert.assertEquals(results.size(), 10, "Number of results is wrong");
         for(String result: results) {
-            Assert.assertTrue(result.toLowerCase().contains("Selenium"),
+            Assert.assertTrue(result.toLowerCase().contains("selenium"),
                     "Searchterm "+"'Selenium'"+ " not found in card");
         }
     }
