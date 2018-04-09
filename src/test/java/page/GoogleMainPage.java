@@ -18,12 +18,6 @@ public class GoogleMainPage extends GoogleBasePage {
     @FindBy(xpath = "//div[@class='sbsb_g']//input[@value='Поиск в Google']")
     private WebElement searchButtonOnTheDropDownList;
 
-    @FindBy(xpath = "//ul[@class='sbsb_b']")
-    private WebElement dropDownListOfSimilarSearchTerms;
-
-    @FindBy(className = "sbsb_b")
-    private WebElement listOfSimilarSearchTerms;
-
     /**
      * Constructor of GoogleMainPage class that takes WebDriver instance from GoogleBasePage class
      * and initialise GoogleMainPage WebElements via PageFactory.
