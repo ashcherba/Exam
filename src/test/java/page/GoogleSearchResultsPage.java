@@ -55,4 +55,15 @@ public class GoogleSearchResultsPage extends GoogleBasePage {
         linkToTheNextPage.click();
         return new GoogleSecondSearchResultsPage(driver);
     }
+
+
+     /**
+     * wait until text appears and gets text from the results status block
+     * @return information about number of the total search results and number of current page
+     */
+    public String getStatusOfResultsOnFirstPage(){
+        waitUntilElementIsVisible(numberOfResutls);
+        String resultsStatusOnFirstPage = numberOfResutls.getText();
+        return resultsStatusOnFirstPage;
+    }
 }
