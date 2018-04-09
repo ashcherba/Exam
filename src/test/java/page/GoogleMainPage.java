@@ -5,10 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static java.lang.Thread.sleep;
-
-
 public class GoogleMainPage extends GoogleBasePage {
+
     @FindBy(id = "lst-ib")
     private WebElement searchInputField;
 
