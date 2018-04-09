@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static java.lang.Thread.sleep;
+
 
 public class GoogleMainPage extends GoogleBasePage {
     @FindBy(id = "lst-ib")
@@ -12,6 +14,15 @@ public class GoogleMainPage extends GoogleBasePage {
 
     @FindBy(name = "btnK")
     private WebElement searchInGoogleButton;
+
+    @FindBy(xpath = "//div[@class='sbsb_g']//input[@value='Поиск в Google']")
+    private WebElement searchButtonOnTheDropDownList;
+
+    @FindBy(xpath = "//ul[@class='sbsb_b']")
+    private WebElement dropDownListOfSimilarSearchTerms;
+
+    @FindBy(className = "sbsb_b")
+    private WebElement listOfSimilarSearchTerms;
 
     /**
      * Constructor of GoogleMainPage class that takes WebDriver instance from GoogleBasePage class
@@ -30,8 +41,12 @@ public class GoogleMainPage extends GoogleBasePage {
      */
     public GoogleSearchResultsPage searchForTerm (String searchTerm){
         searchInputField.sendKeys(searchTerm);
-        waitUntilElementIsClickable(searchInGoogleButton);
-        searchInGoogleButton.submit();
+        if (searchInGoogleButton.isEnabled()) {
+            searchInGoogleButton.submit();
+        } else {
+            waitUntilElementIsVisible(searchButtonOnTheDropDownList);
+            searchButtonOnTheDropDownList.click();
+        }
         return new GoogleSearchResultsPage(driver);
     }
 }
